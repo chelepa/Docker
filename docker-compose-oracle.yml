@@ -1,0 +1,9 @@
+version: "3"
+services:
+    orcldb:
+        image: store/oracle/database-enterprise:12.2.0.1-slim
+        ports:
+          - 1521:1521
+          - 5500:5500
+        environment:
+            DB_SID: "xe"

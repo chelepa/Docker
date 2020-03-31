@@ -1,0 +1,25 @@
+pom.xml add 
+
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+
+
+Inicialização da API:
+
+===> @EnableSwagger2
+
+
+----------------------------------------------------------------------------
+LOGS OGS TOOLS => docker logs -f a6812e0aa3fcc225aa38a9a0fc561b664a8a55e1c1419af713a220e261be882e
+Executar comendados dentro do container => docker exec -it a6812e0aa3fcc225aa38a9a0fc561b664a8a55e1c1419af713a220e261be882e /bin/sh -c "[ -e /bin/bash ] 
+&& /bin/bash || /bin/sh"
