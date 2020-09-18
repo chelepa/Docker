@@ -1,10 +1,12 @@
 version: '3'
 services:
   mongodb:
+    container_name: Mongodb
     image: 'bitnami/mongodb:latest'
     ports:
       - "27017:27017"
   rabbitmq:
+    container_name: Rabbitmq
     image: rabbitmq:management
     expose:
      - "5672"
@@ -14,6 +16,7 @@ services:
     networks:
       - default
   zipkin:
+    container_name: zipkin
     image: "openzipkin/zipkin"
     depends_on:
      - rabbitmq
@@ -27,6 +30,7 @@ services:
       - default
 
   redis:
+    container_name: redis
     image: 'bitnami/redis:latest'
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
