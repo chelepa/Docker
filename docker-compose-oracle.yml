@@ -1,7 +1,7 @@
 version: "3"
 services:
     orcldb:
-        image: store/oracle/database-enterprise:12.2.0.1-slim
+        image: 'chelepa/oracledb:latest'
         ports:
           - 1521:1521
           - 5500:5500
