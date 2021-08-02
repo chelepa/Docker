@@ -1,13 +1,14 @@
+  
 version: '3'
 services:
   mongodb:
     container_name: Mongodb
-    image: 'bitnami/mongodb:latest'
+    image: 'chelepa/mongodb'
     ports:
       - "27017:27017"
   rabbitmq:
     container_name: Rabbitmq
-    image: rabbitmq:management
+    image: 'chelepa/rabbitmq'
     expose:
      - "5672"
     ports:
@@ -15,61 +16,14 @@ services:
      - "5672:5672"
     networks:
       - default
-  zipkin:
-    container_name: zipkin
-    image: "openzipkin/zipkin"
-    depends_on:
-     - rabbitmq
-    links:
-     - rabbitmq
-    environment:
-     - RABBIT_URI=amqp://rabbitmq
-    ports:
-      - "9411:9411"
-    networks:
-      - default
-
   redis:
     container_name: redis
-    image: 'bitnami/redis:latest'
+    image: 'chelepa/redis'
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
     networks:
       - app-tier
-  redis-sentinel:
-    container_name: redis-sentinel-catalog
-    image: 'bitnami/redis-sentinel:latest'
-    environment:
-      - REDIS_MASTER_HOST=redis
-    ports:
-      - '26379:26379'
-    networks:
-      - app-tier
-  #rcli:
-  #  image: redis:latest
-  # links:
-  #    - redis
-  #  command: redis-cli -h redis
-  #mysqlsrv:
-  #  image: mysql:5.7
-  #  environment:
-  #    MYSQL_ROOT_PASSWORD: "uy38if74bw"
-  #    MYSQL_DATABASE: "aseuAdmin"
-  #  ports:
-  #    - "3306:3306"
-  #  volumes:
-  #    - /home/renatogroffe/Desenvolvimento/Docker/Volumes/MySql:/var/lib/mysql
-  #  networks:
-  #    - mysql-compose-network
-
+      
 networks:
   app-tier:
     driver: bridge
-
-#networks: 
-#  mysql-compose-network:
-#    driver: bridge
-#volumes:
-#  redis_data:
-#    driver: local
-
