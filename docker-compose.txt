@@ -10,4 +10,4 @@ services:
       - 'jenkins_data:/bitnami'
 volumes:
   jenkins_data:
-    driver: local
+    driver: local 
