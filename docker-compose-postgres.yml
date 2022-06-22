@@ -6,13 +6,13 @@ services:
     image: postgres
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: changeme
+      POSTGRES_PASSWORD: postgres
     volumes:
        - postgres:/data/postgres
     ports:
       - "5432:5432"
     networks:
-      - postgres
+      - app-tier
     restart: unless-stopped
   
   pgadmin:
@@ -28,11 +28,11 @@ services:
     ports:
       - "5050:80"
     networks:
-      - postgres
+      - app-tier
     restart: unless-stopped
 
 networks:
-  postgres:
+  app-tier:
     driver: bridge
 
 volumes:

@@ -6,6 +6,8 @@ services:
     image: 'chelepa/mongodb'
     ports:
       - "27017:27017"
+    networks:
+      - app-tier
   rabbitmq:
     container_name: Rabbitmq
     image: 'chelepa/rabbitmq'
@@ -15,7 +17,7 @@ services:
      - "15672:15672"
      - "5672:5672"
     networks:
-      - default
+      - app-tier
   redis:
     container_name: redis
     image: 'chelepa/redis'
@@ -23,6 +25,8 @@ services:
       - ALLOW_EMPTY_PASSWORD=yes
     networks:
       - app-tier
+    ports:
+     - "6379:6379"
       
 networks:
   app-tier:
