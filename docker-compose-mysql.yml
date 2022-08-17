@@ -2,15 +2,15 @@ version: '3.1'
 
 services:
   db:
-    container_name: mysql
+    container_name: mysqldb
     image: 'chelepa/mysql'
     environment:
       MYSQL_ROOT_PASSWORD: root
     ports:
       - 3307:3306
     networks:
-      - app-tier
+      - employee-mysql
 
 networks:
-  app-tier:
+  employee-mysql:
     driver: bridge
